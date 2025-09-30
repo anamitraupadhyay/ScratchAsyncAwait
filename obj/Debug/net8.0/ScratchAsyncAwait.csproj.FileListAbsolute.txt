@@ -12,3 +12,4 @@ C:\Users\anami\source\repos\ScratchAsyncAwait\obj\Debug\net8.0\refint\ScratchAsy
 C:\Users\anami\source\repos\ScratchAsyncAwait\obj\Debug\net8.0\ScratchAsyncAwait.pdb
 C:\Users\anami\source\repos\ScratchAsyncAwait\obj\Debug\net8.0\ScratchAsyncAwait.genruntimeconfig.cache
 C:\Users\anami\source\repos\ScratchAsyncAwait\obj\Debug\net8.0\ref\ScratchAsyncAwait.dll
+C:\Users\anami\source\repos\ScratchAsyncAwait\obj\Debug\net8.0\ScratchAsyncAwait.sourcelink.json
