@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Concurrent;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,32 +8,35 @@ namespace ScratchAsyncAwait
     {
         private ConcurrentQueue<T> _pool = new ConcurrentQueue<T>();
 
-        public void Return()
+        public object Rent()
         {
-            if(_pool.Count > 0)
-            {
-                _pool.TryDequeue;
-            }
-            else
-            {
-                return new _pool;
-            }
+            if (_pool.TryDequeue(out var item)) return _pool;
+
+            return new T();
+
         }
-        public void Rent()
+        public void Return(T item)
         {
-            _pool.Enqueue;
+            _pool.Enqueue(item);
         }
     }
     internal class MySinglePool<T> where T : class, new()
     {
-        private readonly T _value;
-        public void Return()
+        private T? _value;
+        public void Return(T item)
         {
-            //
+            _value ??= item;
         }
-        public void Rent()
+        public T Rent()
         {
-            //
+            T? item = _value;
+            if (item is null) return new T();
+            else { item = null; return item; }
+        }
+    }
+    class Mainclass {
+        static void main(string[] args) {
+            MyConcurrentQueuePool<StringBuilder> stringobject = new(); 
         }
     }
 }
