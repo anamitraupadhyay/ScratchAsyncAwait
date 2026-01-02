@@ -34,9 +34,12 @@ namespace ScratchAsyncAwait
             else { item = null; return item; }
         }
     }
-    class Mainclass {
-        static void main(string[] args) {
-            MyConcurrentQueuePool<StringBuilder> stringobject = new(); 
-        }
+}
+class Mainclass
+{
+    static void main(string[] args)
+    {
+        ScratchAsyncAwait.MyConcurrentQueuePool<StringBuilder> stringobject = new();
+        MySinglePool<StringBuilder> singlepool = new();
     }
 }
