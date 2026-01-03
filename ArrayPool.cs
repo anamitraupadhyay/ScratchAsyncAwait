@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 
 namespace ScratchAsyncAwait
 {
+    internal class MyMetaPool<Class<T>> where T : class, new () 
+        {
+            // meta-pooling of resources
+        }
     internal class MyConcurrentQueuePool<T> where T : class, new()
     {
         private ConcurrentQueue<T> _pool = new ConcurrentQueue<T>();
