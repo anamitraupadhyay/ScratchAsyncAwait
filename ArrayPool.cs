@@ -4,9 +4,19 @@ using System.Threading.Tasks;
 
 namespace ScratchAsyncAwait
 {
-    internal class MyMetaPool<Class<T>> where T : class, new () 
+    internal class MyMetaPool<Class<T>> where T : class,struct, new () 
         {
             // meta-pooling of resources
+            private MyMetaPool<MyConcurrentQueuePool<T>> _advpool = new();
+            public object Rent()
+            {
+                if (_advpool.TryDequeue(out var item)) return _advpool;
+                return new T();
+            }
+            public void Return(T item)
+            {
+                //
+            }
         }
     internal class MyConcurrentQueuePool<T> where T : class, new()
     {
@@ -43,7 +53,7 @@ class Mainclass
 {
     static void main(string[] args)
     {
-        ScratchAsyncAwait.MyConcurrentQueuePool<StringBuilder> stringobject = new();
+        /*ScratchAsyncAwait.*/MyConcurrentQueuePool<StringBuilder> stringobject = new();
         MySinglePool<StringBuilder> singlepool = new();
     }
 }
